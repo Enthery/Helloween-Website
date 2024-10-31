@@ -1,8 +1,15 @@
 // Menu
 let menu = document.querySelector(".menu-icon");
+let navbar = document.querySelector(".navbar");
 
 menu.onclick = () => {
   menu.classList.toggle("move");
+  navbar.classList.toggle("open-menu");
+};
+// Close menu scroll
+window.onscroll = () => {
+  menu.classList.remove("move");
+  navbar.classList.remove("open-menu");
 };
 // Selling Swiper
 var swiper = new Swiper(".selling-content", {
@@ -34,4 +41,24 @@ var swiper = new Swiper(".selling-content", {
       spaceBetween: 20,
     },
   },
+});
+// Nav Background Change
+let header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  header.classList.toggle("header-active", window.scrollY > 0);
+});
+
+// ScrollReveal Animation
+const animate = ScrollReveal({
+  origin: "top",
+  distance: "60px",
+  duration: "2500",
+  delay: "400",
+});
+animate.reveal(".nav,.heading,.subscribe p,.email-box");
+animate.reveal(".home-layer1,.home-layer2,.subscribe img", { origin: "left" });
+animate.reveal(".home-content", { origin: "bottom" });
+animate.reveal(".deal-box,.offer-box,.sale-box,.ticket-box,.footer-box", {
+  interval: 100,
 });
